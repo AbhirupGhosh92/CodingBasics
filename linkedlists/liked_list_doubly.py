@@ -1,39 +1,20 @@
-#Pointers exaple concepts
-
-# point1 = {'a' : 0}
-# point2 = point1
-
-# print("1",point1)
-# print("2",point2)
-
-# point1['a'] = 1
-
-# print("Modified")
-
-# print("1",point1)
-# print("2",point2)
-
-# del point1
-
-# print("Delete")
-# print("2",point2)
-
-
-
-#Implemeting linked list. 10 -> 5 -> 16
-
-class LinkedList:
+class DoublyLinkedList:
 
     class __Node__:
         def __init__(self,value):
             self.__value__ = value
             self.__next__ = None
+            self.__prev__ = None
         def value(self):
             return self.__value__
         def set_next(self,node):
             self.__next__ = node
+        def set_prev(self,node):
+            self.__prev__ = node
         def get_next(self):
             return self.__next__
+        def get_prev(self):
+            return self.__prev__
 
 
     def __init__(self,value):
@@ -51,12 +32,14 @@ class LinkedList:
         node = self.__Node__(value)
         self.__size__ = self.__size__ + 1
         self.__tail__.set_next(node)
+        node.set_prev(self.__tail__)
         self.__tail__ = node
 
     def prepend(self,value):
         node = self.__Node__(value)
         self.__size__ = self.__size__ + 1
         node.set_next(self.__head__)
+        self.__head__.set_prev(node)
         self.__head__ = node
 
     def get(self,index):
@@ -98,7 +81,9 @@ class LinkedList:
                         temp = temp.get_next()
                         node = self.__Node__(value)
             node.set_next(temp)
+            temp.set_prev(node)
             prev.set_next(node)
+            node.set_prev(prev)
             self.__size__ = self.__size__ + 1
 
         else:
@@ -117,6 +102,7 @@ class LinkedList:
                 prev = self.get(index - 1)
                 next = prev.get_next().get_next()
                 prev.set_next(next)
+                next.set_prev(prev)
                 self.__size__ = self.__size__ - 1
                 
                 
@@ -124,59 +110,27 @@ class LinkedList:
             raise Exception("Index out of bound")
 
 
-linkedList = LinkedList(0)
-linkedList.append(1)
-linkedList.append(2)
-linkedList.append(3)
-linkedList.append(4)
-linkedList.append(5)
-linkedList.prepend(-1)
-linkedList.prepend(-2)
-linkedList.append(6)
+dlist = DoublyLinkedList(0)
+dlist.append(1)
+dlist.append(2)
 
-linkedList.insert(1,-1.5)
-linkedList.insert(0,-2.5)
-linkedList.insert(linkedList.len()-1,7)
-linkedList.insert(5,0.5)
-linkedList.delete(linkedList.len()-1)
+dlist.insert(1,10)
+dlist.insert(1,11)
+dlist.delete(1)
 
-# traverse a linked list
+print(dlist.get(1).value())
 
-def traverse(linkedList):
+def traverse_reverse(linkedList):
     if(linkedList.head() == linkedList.tail()):
         print(linkedList.head().value())
     else:
-        temp = linkedList.head()
+        temp = linkedList.tail()
         while(True):
-            if(temp.get_next() == None):
+            if(temp.get_prev() == None):
                 print(temp.value())
                 break
             else:
                 print(temp.value())
-                temp = temp.get_next()
+                temp = temp.get_prev()
 
-# print("$$$$$$$Traverse$$$$$$$$")
-traverse(linkedList)
-print("$$$$$$$Traverse$$$$$$$$")
-linkedList.delete(1)
-linkedList.delete(4)
-
-traverse(linkedList)
-
-# print(linkedList)
-# print("$$$$$$$Traverse$$$$$$$$")
-
-# #linkedList.delete(0)
-# traverse(linkedList)
-
-#### Here is an implemetation using dictionaries for better visualisations
-
-
-   
-
-
-
-
-
-
-
+traverse_reverse(dlist) 
