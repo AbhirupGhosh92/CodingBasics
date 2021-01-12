@@ -123,22 +123,35 @@ class LinkedList:
         else:
             raise Exception("Index out of bound")
 
+    def reverse(self):
+        first = self.__head__
+        sec = first.get_next()
+        self.__tail__ = self.__head__
+        while(sec!=None):
+            temp = sec.get_next()
+            sec.set_next(first)
+            first  = sec
+            sec = temp
+        self.__head__.set_next(None)
+        self.__head__ = first
+        return self
 
-linkedList = LinkedList(0)
-linkedList.append(1)
-linkedList.append(2)
-linkedList.append(3)
-linkedList.append(4)
-linkedList.append(5)
-linkedList.prepend(-1)
-linkedList.prepend(-2)
-linkedList.append(6)
 
-linkedList.insert(1,-1.5)
-linkedList.insert(0,-2.5)
-linkedList.insert(linkedList.len()-1,7)
-linkedList.insert(5,0.5)
-linkedList.delete(linkedList.len()-1)
+# linkedList = LinkedList(0)
+# linkedList.append(1)
+# linkedList.append(2)
+# linkedList.append(3)
+# linkedList.append(4)
+# linkedList.append(5)
+# linkedList.prepend(-1)
+# linkedList.prepend(-2)
+# linkedList.append(6)
+
+# linkedList.insert(1,-1.5)
+# linkedList.insert(0,-2.5)
+# linkedList.insert(linkedList.len()-1,7)
+# linkedList.insert(5,0.5)
+# linkedList.delete(linkedList.len()-1)
 
 # traverse a linked list
 
@@ -156,12 +169,12 @@ def traverse(linkedList):
                 temp = temp.get_next()
 
 # print("$$$$$$$Traverse$$$$$$$$")
-traverse(linkedList)
-print("$$$$$$$Traverse$$$$$$$$")
-linkedList.delete(1)
-linkedList.delete(4)
+# traverse(linkedList)
+# print("$$$$$$$Traverse$$$$$$$$")
+# linkedList.delete(1)
+# linkedList.delete(4)
 
-traverse(linkedList)
+# traverse(linkedList)
 
 # print(linkedList)
 # print("$$$$$$$Traverse$$$$$$$$")
