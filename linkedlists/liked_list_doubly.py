@@ -110,15 +110,15 @@ class DoublyLinkedList:
             raise Exception("Index out of bound")
 
 
-dlist = DoublyLinkedList(0)
-dlist.append(1)
-dlist.append(2)
+# dlist = DoublyLinkedList(0)
+# dlist.append(1)
+# dlist.append(2)
 
-dlist.insert(1,10)
-dlist.insert(1,11)
-dlist.delete(1)
+# dlist.insert(1,10)
+# dlist.insert(1,11)
+# dlist.delete(1)
 
-print(dlist.get(1).value())
+# print(dlist.get(1).value())
 
 def traverse_reverse(linkedList):
     if(linkedList.head() == linkedList.tail()):
@@ -133,4 +133,4 @@ def traverse_reverse(linkedList):
                 print(temp.value())
                 temp = temp.get_prev()
 
-traverse_reverse(dlist) 
+# traverse_reverse(dlist) 

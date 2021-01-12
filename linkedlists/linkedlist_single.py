@@ -123,6 +123,7 @@ class LinkedList:
         else:
             raise Exception("Index out of bound")
 
+    #Very important question for interview how to reverse a linked list
     def reverse(self):
         first = self.__head__
         sec = first.get_next()
