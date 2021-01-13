@@ -46,3 +46,27 @@ def fib_recursion(value):
         return fib_recursion(value - 1) + fib_recursion(value - 2)
 
 print(fib_recursion(10))
+
+#Anything that can be implemented reecursively ,  can be immplemented with loops
+
+# Reverse a string with recursion
+
+
+def reverse_string_recursion(value : str) -> str:
+    if(value == ""):
+        return ""
+    else:
+        return reverse_string_recursion(value[1:]) + value[0]
+
+print(reverse_string_recursion("Hello"))
+
+
+def reverse_string_loop(value : str) -> str:
+    stub = ""
+    i = len(value) - 1
+    while(i >= 0):
+        stub = stub + value[i]
+        i = i -1
+    return stub
+
+print(reverse_string_loop("Hello"))
