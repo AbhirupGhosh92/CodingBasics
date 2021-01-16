@@ -59,4 +59,4 @@ tree.insert(20)
 tree.insert(15)
 tree.insert(70)
 
-print(tree.lookup(90))
+print(tree.lookup(70))
