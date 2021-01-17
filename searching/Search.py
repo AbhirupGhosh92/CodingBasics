@@ -57,3 +57,32 @@ def breadth_first_search_recursion(temp,queue):
     return breadth_first_search_recursion(temp,queue)
 
 print(breadth_first_search_recursion(temp,queue))
+
+def depth_first_search_in_order(temp,queue):
+    if(temp.left != None):
+        depth_first_search_in_order(temp.left,queue)
+    queue.append(temp.value)
+    if(temp.right != None):
+        depth_first_search_in_order(temp.right,queue)
+    return queue
+
+print(depth_first_search_in_order(tree.__root__,[]))
+
+def depth_first_search_pre_order(temp,queue):
+    queue.append(temp.value)
+    if(temp.left != None):
+        depth_first_search_pre_order(temp.left,queue)
+    if(temp.right != None):
+        depth_first_search_pre_order(temp.right,queue)
+    return queue
+
+print(depth_first_search_pre_order(tree.__root__,[]))
+
+def depth_first_search_post_order(temp,queue):
+    if(temp.left != None):
+        depth_first_search_post_order(temp.left,queue)
+    if(temp.right != None):
+        depth_first_search_post_order(temp.right,queue)
+    queue.append(temp.value)
+    return queue
+print(depth_first_search_post_order(tree.__root__,[]))
